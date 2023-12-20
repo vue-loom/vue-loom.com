@@ -24,6 +24,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('{anyExceptRoot}', function() {
+    return redirect('/');
+})->where('anyExceptRoot', '[^/]*');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
